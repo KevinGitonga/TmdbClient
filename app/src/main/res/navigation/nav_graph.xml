@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.a1g0.tmdbclient.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_viewAllFragment"
+            app:destination="@id/viewAllFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.a1g0.tmdbclient.ui.details.MovieDetailsFragment"
+        android:label="movie_details_fragment"
+        tools:layout="@layout/fragment_movie_details" >
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_actorDetailsFragment"
+            app:destination="@id/actorDetailsFragment" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_self"
+            app:destination="@id/movieDetailsFragment" />
+        <argument
+            android:name="MOVIE"
+            app:argType="com.a1g0.tmdbclient.data.model.MovieDB"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/actorDetailsFragment"
+        android:name="com.a1g0.tmdbclient.ui.details.ActorDetailsFragment"
+        android:label="fragment_actor_details"
+        tools:layout="@layout/fragment_actor_details" >
+        <action
+            android:id="@+id/action_actorDetailsFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+        <argument
+            android:name="CAST"
+            app:argType="com.a1g0.tmdbclient.data.model.Cast"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewAllFragment"
+        android:name="com.a1g0.tmdbclient.ui.list.ViewAllFragment"
+        android:label="fragment_view_all"
+        tools:layout="@layout/fragment_view_all" >
+        <action
+            android:id="@+id/action_viewAllFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+        <argument
+            android:name="view"
+            android:defaultValue="view"/>
+    </fragment>
+
+</navigation>
