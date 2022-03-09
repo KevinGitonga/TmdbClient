@@ -1,7 +1,6 @@
 package com.a1g0.tmdbclient.ui.adapter
 
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,25 +9,22 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.a1g0.tmdbclient.R
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import com.a1g0.tmdbclient.data.model.Cast
 import com.a1g0.tmdbclient.databinding.ItemCastBinding
 import com.a1g0.tmdbclient.utils.Constants
 import timber.log.Timber
-import java.lang.Exception
 
-@ExperimentalCoroutinesApi
 class CastRecyclerViewAdapter(
-    val context : Context,
-    val castList : ArrayList<Cast>
+    val context: Context,
+    private val castList: ArrayList<Cast>
 ) : RecyclerView.Adapter<CastRecyclerViewAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemCastBinding.bind(itemView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_cast, parent,false))
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_cast, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -36,18 +32,16 @@ class CastRecyclerViewAdapter(
 
             if (position == 0) {
                 binding.spacingStart.visibility = View.VISIBLE
-            }
-            else if (position == Math.min(20, castList.size)-1) {
+            } else if (position == Math.min(20, castList.size) - 1) {
                 binding.spacingEnd.visibility = View.VISIBLE
-            }
-            else {
+            } else {
                 binding.spacingEnd.visibility = View.GONE
                 binding.spacingStart.visibility = View.GONE
             }
 
             binding.castImage.load(Constants.IMAGE_BASE_URL + castList[position].profile_path) {
-                placeholder(Constants.actorPlaceHolder[position%4])
-                error(Constants.actorPlaceHolder[position%4])
+                placeholder(Constants.actorPlaceHolder[position % 4])
+                error(Constants.actorPlaceHolder[position % 4])
             }
 
             binding.castName.text = castList[position].name
@@ -62,5 +56,4 @@ class CastRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int = Math.min(20, castList.size)
-
 }

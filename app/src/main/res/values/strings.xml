@@ -20,4 +20,5 @@
     <string name="toolbar_title">TMDB CLIENT</string>
     <string name="latest">Latest</string>
     <string name="now_playing">Now Playing</string>
+    <string name="first_time_user_network_notification">For first time use you have to be connected, Check your connection to proceed</string>
 </resources>

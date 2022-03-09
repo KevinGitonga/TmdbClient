@@ -9,19 +9,17 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.a1g0.tmdbclient.R
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import com.a1g0.tmdbclient.data.model.Movie
 import com.a1g0.tmdbclient.data.model.MovieDB
 import com.a1g0.tmdbclient.databinding.ItemSimilarMovieBinding
 import com.a1g0.tmdbclient.utils.Constants
 
-@ExperimentalCoroutinesApi
 class SimilarMoviesRecyclerViewAdapter(
-    val context : Context,
-    val movies : ArrayList<Movie>
+    val context: Context,
+    val movies: ArrayList<Movie>
 ) : RecyclerView.Adapter<SimilarMoviesRecyclerViewAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemSimilarMovieBinding.bind(itemView)
     }
 
@@ -34,24 +32,22 @@ class SimilarMoviesRecyclerViewAdapter(
 
             if (position == 0) {
                 binding.spacingStart.visibility = View.VISIBLE
-            }
-            else if (position == movies.size-1) {
+            } else if (position == movies.size - 1) {
                 binding.spacingEnd.visibility = View.VISIBLE
-            }
-            else {
+            } else {
                 binding.spacingEnd.visibility = View.GONE
                 binding.spacingStart.visibility = View.GONE
             }
 
             binding.movieImage.load(Constants.IMAGE_BASE_URL + movies[position].poster_path) {
-                placeholder(Constants.moviePlaceHolder[position%4])
-                error(Constants.moviePlaceHolder[position%4])
+                placeholder(Constants.moviePlaceHolder[position % 4])
+                error(Constants.moviePlaceHolder[position % 4])
             }
 
             binding.movieImage.setOnClickListener {
                 val movie = movies[position]
-                val bundle = bundleOf(Constants.movie to MovieDB(movie.id,movie.poster_path.toString(),
-                    movie.overview.toString(),movie.title.toString(),movie.backdrop_path.toString(),"",
+                val bundle = bundleOf(Constants.movie to MovieDB(movie.id, movie.poster_path.toString(),
+                    movie.overview.toString(), movie.title.toString(), movie.backdrop_path.toString(), "",
                     movie.vote_average!!
                 )
                 )
@@ -61,5 +57,4 @@ class SimilarMoviesRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int = movies.size
-
 }

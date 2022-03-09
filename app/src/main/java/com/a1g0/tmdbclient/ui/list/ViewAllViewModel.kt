@@ -1,6 +1,5 @@
 package com.a1g0.tmdbclient.ui.list
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn

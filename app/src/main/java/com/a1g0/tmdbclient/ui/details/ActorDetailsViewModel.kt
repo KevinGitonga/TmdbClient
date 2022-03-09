@@ -1,6 +1,5 @@
 package com.a1g0.tmdbclient.ui.details
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
