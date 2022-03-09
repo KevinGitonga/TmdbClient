@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TmdbClient">
 
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name=".ui.SplashActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true">
             <intent-filter>
